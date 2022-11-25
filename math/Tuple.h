@@ -12,6 +12,9 @@ namespace math {
         float x,y,z,w;
 
         Tuple(float x, float y, float z);
+
+        friend bool operator== (const Tuple& t1, const Tuple& t2);
+        friend bool operator!= (const Tuple& t1, const Tuple& t2);
     };
 }
 

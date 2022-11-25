@@ -11,6 +11,9 @@ namespace math{
         float x, y, z, w;
 
         Point(float x, float y, float z);
+
+        friend bool operator== (const Point& p1, const Point& p2);
+        friend bool operator!= (const Point& p1, const Point& p2);
     };
 }
 
