@@ -14,7 +14,6 @@ namespace math {
 
         void negate();
     };
-
 }
 
 

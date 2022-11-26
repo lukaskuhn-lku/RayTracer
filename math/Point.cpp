@@ -12,9 +12,4 @@ namespace math{
         this->z = z;
         this->w = 1.0f;
     }
-
-
-
-
-
 }
