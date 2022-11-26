@@ -60,6 +60,18 @@ TEST_CASE("Subtraction Vector and Vector", "[math]") {
     REQUIRE(vv == vv_res);
 }
 
+TEST_CASE("Multiplication Vector and Scalar", "[math]") {
+    math::Vector v1 = math::Vector(1.0f, 1.0f, 1.0f);
+    float scalar = 5;
+
+    math::Vector vv_res = math::Vector(5.0f, 5.0f, 5.0f);
+
+    math::Vector vv = scalar*v1;
+
+    REQUIRE(vv == vv_res);
+}
+
+
 
 
 

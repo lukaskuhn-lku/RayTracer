@@ -16,6 +16,10 @@ namespace math{
     Vector operator- (const Point &p1, const Point &p2);
     Point operator- (const Point &p1, const Vector &p2);
     Vector operator-(const Vector &v1, const Vector &v2);
+
+    Vector operator*(const Vector &v1, float s);
+    Vector operator*(float s, const Vector &v1);
+
 }
 
 #endif //RAYTRACER_MATH_H

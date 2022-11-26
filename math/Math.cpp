@@ -34,4 +34,14 @@ namespace math{
     Vector operator-(const Vector &v1, const Vector &v2){
         return {v1.x - v2.x, v1.y - v2.y, v1.z-v2.z};
     }
+
+    Vector operator*(const Vector &v1, float s) {
+        return {v1.x * s, v1.y * s, v1.z * s};
+    }
+
+    Vector operator*(float s, const Vector &v1) {
+        return v1*s;
+    }
+
+
 }
