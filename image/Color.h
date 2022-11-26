@@ -5,7 +5,7 @@
 #ifndef RAYTRACER_COLOR_H
 #define RAYTRACER_COLOR_H
 
-namespace image{
+namespace image {
     class Color {
     public:
         float r, g, b;
@@ -13,13 +13,19 @@ namespace image{
         Color(float r, float g, float b);
 
         friend bool operator==(const Color &c1, const Color &c2);
+
         friend bool operator!=(const Color &c1, const Color &c2);
     };
 
     Color operator+(const Color &c1, const Color &c2);
+
     Color operator-(const Color &c1, const Color &c2);
 
     Color operator*(const Color &c1, const Color &c2);
+
+    Color operator*(float s, const Color &c);
+
+    Color operator*(const Color &c, float s);
 }
 
 #endif //RAYTRACER_COLOR_H
