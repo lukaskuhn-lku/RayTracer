@@ -5,7 +5,7 @@
 #include <catch2/catch_all.hpp>
 #include "../../math/Point.h"
 
-TEST_CASE("Point Constructor", "[points]") {
+TEST_CASE("Point Constructor", "[point]") {
     math::Point p = math::Point(1.0f, 2.0f, 3.0f);
     REQUIRE(p.x == 1.0);
     REQUIRE(p.y == 2.0);
@@ -13,7 +13,7 @@ TEST_CASE("Point Constructor", "[points]") {
     REQUIRE(p.w == 1.0);
 }
 
-TEST_CASE("Point Comparison", "[points]") {
+TEST_CASE("Point Comparison", "[point]") {
     math::Point p1 = math::Point(1.0f, 2.0f, 3.0f);
     math::Point p2 = math::Point(1.0f, 2.0f, 3.0f);
     math::Point p3 = math::Point(2.0f, 3.0f, 4.0f);
