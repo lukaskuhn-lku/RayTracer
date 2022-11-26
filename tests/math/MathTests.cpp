@@ -71,6 +71,17 @@ TEST_CASE("Multiplication Vector and Scalar", "[math]") {
     REQUIRE(vv == vv_res);
 }
 
+TEST_CASE("Division Vector and Scalar", "[math]") {
+    math::Vector v1 = math::Vector(1.0f, 1.0f, 1.0f);
+    float scalar = 2;
+
+    math::Vector vv_res = math::Vector(0.5f, 0.5f, 0.5f);
+
+    math::Vector vv = v1/scalar;
+
+    REQUIRE(vv == vv_res);
+}
+
 
 
 

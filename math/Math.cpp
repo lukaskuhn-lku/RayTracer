@@ -35,13 +35,18 @@ namespace math{
         return {v1.x - v2.x, v1.y - v2.y, v1.z-v2.z};
     }
 
-    Vector operator*(const Vector &v1, float s) {
-        return {v1.x * s, v1.y * s, v1.z * s};
+    // VEC * SCALAR
+    Vector operator*(const Vector &v, float s) {
+        return {v.x * s, v.y * s, v.z * s};
     }
 
-    Vector operator*(float s, const Vector &v1) {
-        return v1*s;
+    // VEC * SCALAR
+    Vector operator*(float s, const Vector &v) {
+        return v*s;
     }
 
-
+    // VEC / SCALAR
+    Vector operator/(const Vector &v, float s) {
+        return {v.x/s, v.y/s, v.z/s};
+    }
 }
