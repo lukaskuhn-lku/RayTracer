@@ -12,7 +12,10 @@ namespace math {
     public:
         Vector(float x, float y, float z);
 
-        void negate();
+        Vector negate();
+        float magnitude();
+        Vector normalize();
+
     };
 }
 

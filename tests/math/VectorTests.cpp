@@ -25,7 +25,23 @@ TEST_CASE("Negate Vector", "[vector]") {
     math::Vector v1 = math::Vector(1.0f, 2.0f, 3.0f);
     math::Vector v_res = math::Vector(-1.0f, -2.0f, -3.0f);
 
-    v1.negate();
+    REQUIRE(v1.negate() == v_res);
+}
 
-    REQUIRE(v1 == v_res);
+TEST_CASE("Magnitude Vector", "[vector]") {
+    math::Vector v1 = math::Vector(1.0f, 0.0f, 0.0f);
+    REQUIRE(v1.magnitude() == 1.0f);
+
+    math::Vector v2 = math::Vector(0.0f, 3.0f, 0.0f);
+    REQUIRE(v2.magnitude() == 3.0f);
+
+    math::Vector v3 = math::Vector(4.0f, 3.0f, 0.0f);
+    REQUIRE(v3.magnitude() == 5.0f);
+}
+
+TEST_CASE("Normalize Vector", "[vector]") {
+    math::Vector v1 = math::Vector(4.0f, 0.0f, 0.0f);
+    math::Vector v1_res = math::Vector(1.0f, 0.0f, 0.0f);
+
+    REQUIRE(v1.normalize() == v1_res);
 }
