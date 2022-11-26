@@ -20,7 +20,11 @@ namespace math{
     Vector operator*(const Vector &v, float s);
     Vector operator*(float s, const Vector &v);
 
+    float operator*(const Vector &v1, const Vector &v2);
+
     Vector operator/(const Vector &v, float s);
+
+    Vector cross(const Vector &v1, const Vector &v2);
 }
 
 #endif //RAYTRACER_MATH_H

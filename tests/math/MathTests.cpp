@@ -82,6 +82,25 @@ TEST_CASE("Division Vector and Scalar", "[math]") {
     REQUIRE(vv == vv_res);
 }
 
+TEST_CASE("Dot Product Vectors", "[math]") {
+    math::Vector v1 = math::Vector(1.0f, 2.0f, 3.0f);
+    math::Vector v2 = math::Vector(2.0f, 3.0f, 4.0f);
+
+    float dot = v1*v2;
+
+    REQUIRE(dot == 20);
+}
+
+
+TEST_CASE("Cross Product Vectors", "[math]") {
+    math::Vector v1 = math::Vector(1.0f, 2.0f, 3.0f);
+    math::Vector v2 = math::Vector(2.0f, 3.0f, 4.0f);
+
+    math::Vector crossed = math::cross(v1,v2);
+    math::Vector crossed_res = math::Vector(-1.0f, 2.0f, -1.0f);
+
+    REQUIRE(crossed == crossed_res);
+}
 
 
 
