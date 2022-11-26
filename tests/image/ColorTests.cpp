@@ -5,7 +5,6 @@
 #include "../../image/Color.h"
 
 TEST_CASE("Create a Color", "[color]") {
-
     image::Color color = image::Color(1.0f, 1.0f, 1.0f);
 
     REQUIRE(color.r == 1.0f);
@@ -14,7 +13,6 @@ TEST_CASE("Create a Color", "[color]") {
 }
 
 TEST_CASE("Color Comparison", "[color]") {
-
     image::Color c1 = image::Color(1.1f, 1.2f, 1.3f);
     image::Color c2 = image::Color(1.1f, 1.2f, 1.3f);
 
@@ -40,6 +38,18 @@ TEST_CASE("Subtract Color from Color", "[color]") {
     image::Color cc_res = image::Color(0.1f, 0.8f, -0.2f);
 
     image::Color cc = c1-c2;
+
+    REQUIRE(cc == cc_res);
+}
+
+
+TEST_CASE("Multiplication Color by Color", "[color]") {
+    image::Color c1 = image::Color(1.0f, 1.0f, 1.0f);
+    image::Color c2 = image::Color(0.9f, 0.2f, 1.2f);
+
+    image::Color cc_res = image::Color(0.9f, 0.2f, 1.2f);
+
+    image::Color cc = c1*c2;
 
     REQUIRE(cc == cc_res);
 }

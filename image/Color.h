@@ -18,6 +18,8 @@ namespace image{
 
     Color operator+(const Color &c1, const Color &c2);
     Color operator-(const Color &c1, const Color &c2);
+
+    Color operator*(const Color &c1, const Color &c2);
 }
 
 #endif //RAYTRACER_COLOR_H
