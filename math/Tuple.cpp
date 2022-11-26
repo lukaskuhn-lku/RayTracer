@@ -2,6 +2,7 @@
 // Created by kuhn- on 25.11.2022.
 //
 
+#include <cstdlib>
 #include "Tuple.h"
 
 namespace math {
@@ -20,9 +21,14 @@ namespace math {
     }
 
     bool operator==(const Tuple &t1, const Tuple &t2) {
-        if(t1.x == t2.x && t1.y == t2.y && t1.z == t2.z && t1.w == t2.w) return true;
+        const float epsilon = 0.0001f;
 
-        return false;
+        if(std::abs(t1.x-t2.x) > epsilon) return false;
+        if(std::abs(t1.y-t2.y) > epsilon) return false;
+        if(std::abs(t1.y-t2.y) > epsilon) return false;
+        if(std::abs(t1.w-t2.w) > epsilon) return false;
+
+        return true;
     }
 
     bool operator!=(const Tuple &t1, const Tuple &t2) {
