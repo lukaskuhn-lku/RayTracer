@@ -12,6 +12,8 @@ namespace math {
     public:
         Vector(float x, float y, float z);
     };
+
+    Vector operator+ (const Vector &v1, const Vector &v2);
 }
 
 

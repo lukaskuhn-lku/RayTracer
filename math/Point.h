@@ -6,16 +6,20 @@
 #define RAYTRACER_POINT_H
 
 #include "Tuple.h"
+#include "Vector.h"
 
 namespace math{
     class Point: public Tuple {
     public:
         Point(float x, float y, float z);
-
-        //friend bool operator== (const Point& p1, const Point& p2);
-        //friend bool operator!= (const Point& p1, const Point& p2);
     };
+
+    Point operator+ (const Point &p, const Vector &v);
+    Point operator+ (const Vector &v, const Point &p);
 }
+
+
+
 
 
 #endif //RAYTRACER_POINT_H

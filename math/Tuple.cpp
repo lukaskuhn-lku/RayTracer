@@ -3,7 +3,10 @@
 //
 
 #include <cstdlib>
+#include <stdexcept>
 #include "Tuple.h"
+#include "Vector.h"
+#include "Point.h"
 
 namespace math {
     Tuple::Tuple(){
@@ -33,5 +36,5 @@ namespace math {
 
     bool operator!=(const Tuple &t1, const Tuple &t2) {
         return !(t1 == t2);
-    };
+    }
 }
