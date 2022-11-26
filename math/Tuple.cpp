@@ -3,10 +3,7 @@
 //
 
 #include <cstdlib>
-#include <stdexcept>
 #include "Tuple.h"
-#include "Vector.h"
-#include "Point.h"
 
 namespace math {
     Tuple::Tuple(){
