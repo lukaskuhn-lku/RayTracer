@@ -20,3 +20,12 @@ TEST_CASE("Vector Comparison", "[vector]") {
     REQUIRE(v1 == v2);
     REQUIRE(v2 != v3);
 }
+
+TEST_CASE("Negate Vector", "[vector]") {
+    math::Vector v1 = math::Vector(1.0f, 2.0f, 3.0f);
+    math::Vector v_res = math::Vector(-1.0f, -2.0f, -3.0f);
+
+    v1.negate();
+
+    REQUIRE(v1 == v_res);
+}

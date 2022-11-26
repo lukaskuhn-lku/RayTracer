@@ -11,9 +11,10 @@ namespace math {
     class Vector : public Tuple {
     public:
         Vector(float x, float y, float z);
+
+        void negate();
     };
 
-    Vector operator+ (const Vector &v1, const Vector &v2);
 }
 
 
