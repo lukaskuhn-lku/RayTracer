@@ -30,7 +30,6 @@ TEST_CASE("Write Pixel to Canvas", "[canvas]") {
 
 TEST_CASE("Canvas to PPM", "[canvas]") {
     image::Canvas canvas = image::Canvas(3, 3);
-    canvas.writePixel(0,2, {1.0f, 0.5f, 0.3f});
 
     std::string ppm = canvas.to_ppm();
     std::string ppm_res = "P3\n"
