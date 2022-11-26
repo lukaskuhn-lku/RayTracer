@@ -27,6 +27,21 @@ namespace image {
         return !(c1 == c2);
     }
 
+    std::vector<int> Color::normalizeInt(int min, int max) const {
+        std::vector<int> vals = {};
+
+        vals.push_back((int) (this->r * max));
+        vals.push_back((int) (this->g * max));
+        vals.push_back((int) (this->b * max));
+
+        for(int & val : vals){
+            if(val > max) val = max;
+            if(val < min) val = min;
+        }
+
+        return vals;
+    }
+
     Color operator+(const image::Color &c1, const image::Color &c2) {
         return {c1.r + c2.r, c1.g + c2.g, c1.b + c2.b};
     }
