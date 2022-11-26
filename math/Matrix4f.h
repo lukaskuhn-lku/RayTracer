@@ -7,14 +7,12 @@
 
 
 #include <vector>
+#include "Matrix.h"
 
 namespace math{
-    class Matrix4f {
+    class Matrix4f: public Matrix{
     public:
         Matrix4f(float x);
-        float& operator()(int row, int column);
-    private:
-        std::vector<std::vector<float>> mat;
     };
 }
 
