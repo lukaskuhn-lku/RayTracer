@@ -14,10 +14,15 @@ namespace math{
             std::pair<int, int> shape;
             Matrix(int n, int m, float x);
 
-        float& operator()(int row, int column);
+            float& operator()(int row, int column);
+
+            friend bool operator==(const Matrix& mat1, const Matrix& mat2);
+            friend bool operator!=(const Matrix& mat1, const Matrix& mat2);
+
         private:
             std::vector<std::vector<float>> mat;
     };
+
 }
 
 

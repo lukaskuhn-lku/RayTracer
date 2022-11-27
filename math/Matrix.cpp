@@ -18,7 +18,7 @@ namespace math {
         this->shape = std::make_pair(n, m);
     }
 
-    float &Matrix::operator()(int row, int column) {
+     float &Matrix::operator()(int row, int column) {
         if (row < this->shape.first && column < this->shape.second) {
             return this->mat[row][column];
         } else {
@@ -29,4 +29,14 @@ namespace math {
         }
 
     }
+
+    bool operator==(const Matrix &mat1, const Matrix &mat2) {
+        return mat1.mat == mat2.mat;
+    }
+
+    bool operator!=(const Matrix &mat1, const Matrix &mat2) {
+        return !(mat1 == mat2);
+    }
+
+
 }
