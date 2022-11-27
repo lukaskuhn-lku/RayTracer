@@ -19,6 +19,9 @@ namespace math{
             friend bool operator==(const Matrix& mat1, const Matrix& mat2);
             friend bool operator!=(const Matrix& mat1, const Matrix& mat2);
 
+            float get(int row, int column) const;
+
+            std::string str() const;
         private:
             std::vector<std::vector<float>> mat;
     };

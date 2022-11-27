@@ -2,37 +2,38 @@
 // Created by kuhn- on 26.11.2022.
 //
 
+#include <stdexcept>
 #include "Math.h"
 
-namespace math{
+namespace math {
     // POINT + VEC
     Point operator+(const Point &p, const Vector &v) {
-        return {p.x+v.x, p.y+v.y, p.z+v.z};
+        return {p.x + v.x, p.y + v.y, p.z + v.z};
     }
 
     // VEC + POINT
     Point operator+(const Vector &v, const Point &p) {
-        return p+v;
+        return p + v;
     }
 
     // VEC + VEC
     Vector operator+(const Vector &v1, const Vector &v2) {
-        return {v1.x+v2.x, v1.y+v2.y, v1.z+v2.z};
+        return {v1.x + v2.x, v1.y + v2.y, v1.z + v2.z};
     }
 
     // POINT - POINT
     Vector operator-(const Point &p1, const Point &p2) {
-        return {p1.x-p2.x, p1.y-p2.y, p1.z-p2.z};
+        return {p1.x - p2.x, p1.y - p2.y, p1.z - p2.z};
     }
 
     // POINT - VEC
     Point operator-(const Point &p, const Vector &v) {
-        return {p.x-v.x, p.y-v.y, p.z-v.z};
+        return {p.x - v.x, p.y - v.y, p.z - v.z};
     }
 
     // VEC - VEC
-    Vector operator-(const Vector &v1, const Vector &v2){
-        return {v1.x - v2.x, v1.y - v2.y, v1.z-v2.z};
+    Vector operator-(const Vector &v1, const Vector &v2) {
+        return {v1.x - v2.x, v1.y - v2.y, v1.z - v2.z};
     }
 
     // VEC * SCALAR
@@ -42,19 +43,44 @@ namespace math{
 
     // VEC * SCALAR
     Vector operator*(float s, const Vector &v) {
-        return v*s;
+        return v * s;
     }
 
     // VEC / SCALAR
     Vector operator/(const Vector &v, float s) {
-        return {v.x/s, v.y/s, v.z/s};
+        return {v.x / s, v.y / s, v.z / s};
     }
 
     float operator*(const Vector &v1, const Vector &v2) {
-        return v1.x*v2.x+v1.y*v2.y+v1.z*v2.z+v1.w*v2.w;
+        return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z + v1.w * v2.w;
     }
 
-    Vector cross(const Vector &v1, const Vector &v2){
-        return {v1.y*v2.z-v1.z*v2.y,v1.z*v2.x-v1.x*v2.z,v1.x*v2.y-v1.y*v2.x};
+    Vector cross(const Vector &v1, const Vector &v2) {
+        return {v1.y * v2.z - v1.z * v2.y, v1.z * v2.x - v1.x * v2.z, v1.x * v2.y - v1.y * v2.x};
+    }
+
+    Matrix operator*(const Matrix &m1, const Matrix &m2) {
+        if (m1.shape.second != m2.shape.first) {
+            throw std::invalid_argument("Invalid shapes for matrix multiplication");
+        }
+
+        Matrix C = Matrix(m1.shape.first, m2.shape.second, 0.0f);
+
+        int n = m1.shape.first;
+        int m = m1.shape.second;
+        int p = m2.shape.second;
+
+        for(int i = 0; i<n; i++){
+            for(int j = 0; j<p; j++){
+                float sum = 0;
+                for(int k = 0; k < m; k++){
+                    sum += m1.get(i,k) * m2.get(k,j);
+                }
+
+                C(i,j) = sum;
+            }
+        }
+
+        return C;
     }
 }

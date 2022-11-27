@@ -11,14 +11,15 @@ namespace math {
             this->mat.emplace_back(std::vector<float>{});
 
             for (int j = 0; j < m; j++) {
-                this->mat[i].emplace_back(x);
+                if (j == i) { this->mat[i].emplace_back(x); }
+                else { this->mat[i].emplace_back(0.0f); }
             }
         }
 
         this->shape = std::make_pair(n, m);
     }
 
-     float &Matrix::operator()(int row, int column) {
+    float &Matrix::operator()(int row, int column) {
         if (row < this->shape.first && column < this->shape.second) {
             return this->mat[row][column];
         } else {
@@ -36,6 +37,23 @@ namespace math {
 
     bool operator!=(const Matrix &mat1, const Matrix &mat2) {
         return !(mat1 == mat2);
+    }
+
+    float Matrix::get(int row, int column) const {
+        return this->mat[row][column];
+    }
+
+    std::string Matrix::str() const{
+        std::string matrixStr;
+
+        for(int row = 0; row < this->shape.first; row++){
+            for(int column = 0; column<this->shape.second; column++){
+                matrixStr += std::to_string(this->get(row, column)) + " ";
+            }
+            matrixStr += "\n";
+        }
+
+        return matrixStr;
     }
 
 
