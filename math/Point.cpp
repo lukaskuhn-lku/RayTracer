@@ -5,7 +5,7 @@
 #include "Point.h"
 #include "Vector.h"
 
-namespace math{
+namespace math {
     Point::Point(float x, float y, float z) {
         this->x = x;
         this->y = y;

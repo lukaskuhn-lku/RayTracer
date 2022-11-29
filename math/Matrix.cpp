@@ -56,11 +56,11 @@ namespace math {
         return this->mat[row][column];
     }
 
-    std::string Matrix::str() const{
+    std::string Matrix::str() const {
         std::string matrixStr;
 
-        for(int row = 0; row < this->shape.first; row++){
-            for(int column = 0; column<this->shape.second; column++){
+        for (int row = 0; row < this->shape.first; row++) {
+            for (int column = 0; column < this->shape.second; column++) {
                 matrixStr += std::to_string(this->get(row, column)) + " ";
             }
             matrixStr += "\n";
@@ -72,8 +72,8 @@ namespace math {
     Matrix Matrix::transpose() const {
         Matrix trans = Matrix(this->shape.first, this->shape.second, 0.0f);
 
-        for(int column = 0; column<this->shape.first; column++){
-            for(int row = 0; row<this->shape.second; row++){
+        for (int column = 0; column < this->shape.first; column++) {
+            for (int row = 0; row < this->shape.second; row++) {
                 trans(column, row) = this->get(row, column);
             }
         }

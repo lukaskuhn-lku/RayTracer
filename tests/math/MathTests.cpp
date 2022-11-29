@@ -12,7 +12,7 @@ TEST_CASE("Addition Point and Vector", "[math]") {
 
     math::Point pv_res = math::Point(3.0f, 3.0f, 3.0f);
 
-    math::Point pv = p+v;
+    math::Point pv = p + v;
 
     REQUIRE(pv == pv_res);
 }
@@ -23,7 +23,7 @@ TEST_CASE("Addition Vector and Vector", "[math]") {
 
     math::Vector vv_res = math::Vector(3.0f, 3.0f, 3.0f);
 
-    math::Vector vv = v1+v2;
+    math::Vector vv = v1 + v2;
 
     REQUIRE(vv == vv_res);
 }
@@ -34,7 +34,7 @@ TEST_CASE("Subtraction Point and Point", "[math]") {
 
     math::Vector vv_res = math::Vector(-1.0f, -1.0f, -1.0f);
 
-    math::Vector vv = p1-p2;
+    math::Vector vv = p1 - p2;
 
     REQUIRE(vv == vv_res);
 }
@@ -45,7 +45,7 @@ TEST_CASE("Subtraction Point and Vector", "[math]") {
 
     math::Point pv_res = math::Point(0.0f, 0.0f, 0.0f);
 
-    math::Point pv = p-v;
+    math::Point pv = p - v;
 
     REQUIRE(pv == pv_res);
 }
@@ -56,7 +56,7 @@ TEST_CASE("Subtraction Vector and Vector", "[math]") {
 
     math::Vector vv_res = math::Vector(-1.0f, -1.0f, -1.0f);
 
-    math::Vector vv = v1-v2;
+    math::Vector vv = v1 - v2;
 
     REQUIRE(vv == vv_res);
 }
@@ -67,7 +67,7 @@ TEST_CASE("Multiplication Vector and Scalar", "[math]") {
 
     math::Vector vv_res = math::Vector(5.0f, 5.0f, 5.0f);
 
-    math::Vector vv = scalar*v1;
+    math::Vector vv = scalar * v1;
 
     REQUIRE(vv == vv_res);
 }
@@ -78,7 +78,7 @@ TEST_CASE("Division Vector and Scalar", "[math]") {
 
     math::Vector vv_res = math::Vector(0.5f, 0.5f, 0.5f);
 
-    math::Vector vv = v1/scalar;
+    math::Vector vv = v1 / scalar;
 
     REQUIRE(vv == vv_res);
 }
@@ -87,7 +87,7 @@ TEST_CASE("Dot Product Vectors", "[math]") {
     math::Vector v1 = math::Vector(1.0f, 2.0f, 3.0f);
     math::Vector v2 = math::Vector(2.0f, 3.0f, 4.0f);
 
-    float dot = v1*v2;
+    float dot = v1 * v2;
 
     REQUIRE(dot == 20);
 }
@@ -97,14 +97,15 @@ TEST_CASE("Cross Product Vectors", "[math]") {
     math::Vector v1 = math::Vector(1.0f, 2.0f, 3.0f);
     math::Vector v2 = math::Vector(2.0f, 3.0f, 4.0f);
 
-    math::Vector crossed = math::cross(v1,v2);
+    math::Vector crossed = math::cross(v1, v2);
     math::Vector crossed_res = math::Vector(-1.0f, 2.0f, -1.0f);
 
     REQUIRE(crossed == crossed_res);
 }
 
 TEST_CASE("Determinant 2x2 Matrix", "[math]") {
-    math::Matrix m1 = math::Matrix({{1.0f, 5.0f},{-3.0f, 2.0f}});
+    math::Matrix m1 = math::Matrix({{1.0f,  5.0f},
+                                    {-3.0f, 2.0f}});
 
     float det = math::determinant(m1);
 
@@ -113,19 +114,27 @@ TEST_CASE("Determinant 2x2 Matrix", "[math]") {
 
 
 TEST_CASE("Submatrix 3x3 Matrix", "[math]") {
-    math::Matrix m1 = math::Matrix({{1.0f, 2.0f, 3.0f},{4.0f, 5.0f, 6.0f},{7.0f, 8.0f, 9.0f}});
-    math::Matrix m_res = math::Matrix({{5.0f, 6.0f},{8.0f, 9.0f}});
+    math::Matrix m1 = math::Matrix({{1.0f, 2.0f, 3.0f},
+                                    {4.0f, 5.0f, 6.0f},
+                                    {7.0f, 8.0f, 9.0f}});
+    math::Matrix m_res = math::Matrix({{5.0f, 6.0f},
+                                       {8.0f, 9.0f}});
 
     math::Matrix m2 = math::submatrix(m1, 0, 0);
 
-    REQUIRE(m2  == m_res);
+    REQUIRE(m2 == m_res);
 }
 
 TEST_CASE("Submatrix 4x4 Matrix", "[math]") {
-    math::Matrix m1 = math::Matrix({{1.0f, 2.0f, 3.0f, 9.0f},{4.0f, 5.0f, 6.0f, 9.0f},{7.0f, 8.0f, 9.0f, 9.0f},{7.0f, 8.0f, 9.0f, 9.0f}});
-    math::Matrix m_res = math::Matrix({{5.0f, 6.0f, 9.0f},{8.0f, 9.0f, 9.0f},{8.0f, 9.0f, 9.0f}});
+    math::Matrix m1 = math::Matrix({{1.0f, 2.0f, 3.0f, 9.0f},
+                                    {4.0f, 5.0f, 6.0f, 9.0f},
+                                    {7.0f, 8.0f, 9.0f, 9.0f},
+                                    {7.0f, 8.0f, 9.0f, 9.0f}});
+    math::Matrix m_res = math::Matrix({{5.0f, 6.0f, 9.0f},
+                                       {8.0f, 9.0f, 9.0f},
+                                       {8.0f, 9.0f, 9.0f}});
 
     math::Matrix m2 = math::submatrix(m1, 0, 0);
 
-    REQUIRE(m2  == m_res);
+    REQUIRE(m2 == m_res);
 }

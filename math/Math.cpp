@@ -70,14 +70,14 @@ namespace math {
         int m = m1.shape.second;
         int p = m2.shape.second;
 
-        for(int i = 0; i<n; i++){
-            for(int j = 0; j<p; j++){
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < p; j++) {
                 float sum = 0;
-                for(int k = 0; k < m; k++){
-                    sum += m1.get(i,k) * m2.get(k,j);
+                for (int k = 0; k < m; k++) {
+                    sum += m1.get(i, k) * m2.get(k, j);
                 }
 
-                C(i,j) = sum;
+                C(i, j) = sum;
             }
         }
 
@@ -85,8 +85,8 @@ namespace math {
     }
 
     float determinant(const Matrix &m) {
-        if(m.shape.first == m.shape.second && m.shape.first == 2){
-            return m.get(0,0) * m.get(1,1) - m.get(0,1) * m.get(1,0);
+        if (m.shape.first == m.shape.second && m.shape.first == 2) {
+            return m.get(0, 0) * m.get(1, 1) - m.get(0, 1) * m.get(1, 0);
         }
 
         return 0.0f;
@@ -95,14 +95,14 @@ namespace math {
     Matrix submatrix(const Matrix &m, int row, int column) {
         std::vector<std::vector<float>> mat;
 
-        for(int r = 0; r<m.shape.first; r++){
-            if(r == row) continue;
+        for (int r = 0; r < m.shape.first; r++) {
+            if (r == row) continue;
 
             std::vector<float> tmp;
-            for(int c = 0; c<m.shape.second; c++){
-                   if(c == column) continue;
+            for (int c = 0; c < m.shape.second; c++) {
+                if (c == column) continue;
 
-                   tmp.emplace_back(m.get(r,c));
+                tmp.emplace_back(m.get(r, c));
             }
 
             mat.emplace_back(tmp);

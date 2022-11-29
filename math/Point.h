@@ -7,15 +7,12 @@
 
 #include "Tuple.h"
 
-namespace math{
-    class Point: public Tuple {
+namespace math {
+    class Point : public Tuple {
     public:
         Point(float x, float y, float z);
     };
 }
-
-
-
 
 
 #endif //RAYTRACER_POINT_H

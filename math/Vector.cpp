@@ -5,7 +5,7 @@
 #include "Vector.h"
 #include <cmath>
 
-namespace math{
+namespace math {
     Vector::Vector(float x, float y, float z) {
         this->x = x;
         this->y = y;
@@ -14,7 +14,7 @@ namespace math{
     }
 
     Vector Vector::negate() {
-        return{-x, -y, -z};
+        return {-x, -y, -z};
     }
 
     float Vector::magnitude() {
@@ -23,6 +23,6 @@ namespace math{
 
     Vector Vector::normalize() {
         float mag = this->magnitude();
-        return {this->x/mag, this->y/mag, this->z/mag};
+        return {this->x / mag, this->y / mag, this->z / mag};
     }
 }

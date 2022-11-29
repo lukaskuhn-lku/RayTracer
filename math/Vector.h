@@ -13,7 +13,9 @@ namespace math {
         Vector(float x, float y, float z);
 
         Vector negate();
+
         float magnitude();
+
         Vector normalize();
 
     };

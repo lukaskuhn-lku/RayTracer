@@ -8,27 +8,30 @@
 #include <vector>
 #include <tuple>
 
-namespace math{
+namespace math {
     class Matrix {
-        public:
-            std::pair<int, int> shape;
+    public:
+        std::pair<int, int> shape;
 
-            Matrix(int n, int m, float x);
-            Matrix(std::vector<std::vector<float>> input);
+        Matrix(int n, int m, float x);
+
+        Matrix(std::vector<std::vector<float>> input);
 
 
-            float& operator()(int row, int column);
+        float &operator()(int row, int column);
 
-            friend bool operator==(const Matrix& mat1, const Matrix& mat2);
-            friend bool operator!=(const Matrix& mat1, const Matrix& mat2);
+        friend bool operator==(const Matrix &mat1, const Matrix &mat2);
 
-            Matrix transpose() const;
+        friend bool operator!=(const Matrix &mat1, const Matrix &mat2);
 
-            float get(int row, int column) const;
+        Matrix transpose() const;
 
-            std::string str() const;
-        private:
-            std::vector<std::vector<float>> mat;
+        float get(int row, int column) const;
+
+        std::string str() const;
+
+    private:
+        std::vector<std::vector<float>> mat;
     };
 
 }
