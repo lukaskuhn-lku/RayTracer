@@ -22,7 +22,7 @@ namespace math{
             friend bool operator==(const Matrix& mat1, const Matrix& mat2);
             friend bool operator!=(const Matrix& mat1, const Matrix& mat2);
 
-            Matrix transpose();
+            Matrix transpose() const;
 
             float get(int row, int column) const;
 

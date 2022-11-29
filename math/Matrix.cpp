@@ -69,8 +69,7 @@ namespace math {
         return matrixStr;
     }
 
-    Matrix Matrix::transpose() {
-
+    Matrix Matrix::transpose() const {
         Matrix trans = Matrix(this->shape.first, this->shape.second, 0.0f);
 
         for(int column = 0; column<this->shape.first; column++){
