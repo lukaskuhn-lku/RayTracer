@@ -12,12 +12,17 @@ namespace math{
     class Matrix {
         public:
             std::pair<int, int> shape;
+
             Matrix(int n, int m, float x);
+            Matrix(std::vector<std::vector<float>> input);
+
 
             float& operator()(int row, int column);
 
             friend bool operator==(const Matrix& mat1, const Matrix& mat2);
             friend bool operator!=(const Matrix& mat1, const Matrix& mat2);
+
+            Matrix transpose();
 
             float get(int row, int column) const;
 

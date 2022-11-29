@@ -7,16 +7,29 @@
 
 namespace math {
     Matrix::Matrix(int n, int m, float x) {
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < m; i++) {
             this->mat.emplace_back(std::vector<float>{});
 
-            for (int j = 0; j < m; j++) {
+            for (int j = 0; j < n; j++) {
                 if (j == i) { this->mat[i].emplace_back(x); }
                 else { this->mat[i].emplace_back(0.0f); }
             }
         }
 
         this->shape = std::make_pair(n, m);
+    }
+
+    //Create matrix from array
+    Matrix::Matrix(std::vector<std::vector<float>> input) {
+        for (int i = 0; i < input.size(); i++) {
+            this->mat.emplace_back(std::vector<float>{});
+
+            for (int j = 0; j < input[i].size(); j++) {
+                this->mat[i].emplace_back(input[i][j]);
+            }
+        }
+
+        this->shape = std::make_pair(input.size(), input[0].size());
     }
 
     float &Matrix::operator()(int row, int column) {
@@ -55,6 +68,21 @@ namespace math {
 
         return matrixStr;
     }
+
+    Matrix Matrix::transpose() {
+
+        Matrix trans = Matrix(this->shape.first, this->shape.second, 0.0f);
+
+        for(int column = 0; column<this->shape.first; column++){
+            for(int row = 0; row<this->shape.second; row++){
+                trans(column, row) = this->get(row, column);
+            }
+        }
+
+        return trans;
+    }
+
+
 
 
 }
