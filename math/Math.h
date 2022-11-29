@@ -28,6 +28,9 @@ namespace math{
     Vector cross(const Vector &v1, const Vector &v2);
 
     Matrix operator*(const Matrix &m1, const Matrix &m2);
+
+    float determinant(const Matrix &m);
+    Matrix submatrix(const Matrix &m, int row, int column);
 }
 
 #endif //RAYTRACER_MATH_H

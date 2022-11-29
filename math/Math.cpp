@@ -83,4 +83,31 @@ namespace math {
 
         return C;
     }
+
+    float determinant(const Matrix &m) {
+        if(m.shape.first == m.shape.second && m.shape.first == 2){
+            return m.get(0,0) * m.get(1,1) - m.get(0,1) * m.get(1,0);
+        }
+
+        return 0.0f;
+    }
+
+    Matrix submatrix(const Matrix &m, int row, int column) {
+        std::vector<std::vector<float>> mat;
+
+        for(int r = 0; r<m.shape.first; r++){
+            if(r == row) continue;
+
+            std::vector<float> tmp;
+            for(int c = 0; c<m.shape.second; c++){
+                   if(c == column) continue;
+
+                   tmp.emplace_back(m.get(r,c));
+            }
+
+            mat.emplace_back(tmp);
+        }
+
+        return {mat};
+    }
 }

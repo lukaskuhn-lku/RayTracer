@@ -2,6 +2,7 @@
 // Created by kuhn- on 26.11.2022.
 //
 #include <catch2/catch_all.hpp>
+#include <iostream>
 #include "../../math/Math.h"
 
 
@@ -102,6 +103,29 @@ TEST_CASE("Cross Product Vectors", "[math]") {
     REQUIRE(crossed == crossed_res);
 }
 
+TEST_CASE("Determinant 2x2 Matrix", "[math]") {
+    math::Matrix m1 = math::Matrix({{1.0f, 5.0f},{-3.0f, 2.0f}});
+
+    float det = math::determinant(m1);
+
+    REQUIRE(det == 17);
+}
 
 
+TEST_CASE("Submatrix 3x3 Matrix", "[math]") {
+    math::Matrix m1 = math::Matrix({{1.0f, 2.0f, 3.0f},{4.0f, 5.0f, 6.0f},{7.0f, 8.0f, 9.0f}});
+    math::Matrix m_res = math::Matrix({{5.0f, 6.0f},{8.0f, 9.0f}});
 
+    math::Matrix m2 = math::submatrix(m1, 0, 0);
+
+    REQUIRE(m2  == m_res);
+}
+
+TEST_CASE("Submatrix 4x4 Matrix", "[math]") {
+    math::Matrix m1 = math::Matrix({{1.0f, 2.0f, 3.0f, 9.0f},{4.0f, 5.0f, 6.0f, 9.0f},{7.0f, 8.0f, 9.0f, 9.0f},{7.0f, 8.0f, 9.0f, 9.0f}});
+    math::Matrix m_res = math::Matrix({{5.0f, 6.0f, 9.0f},{8.0f, 9.0f, 9.0f},{8.0f, 9.0f, 9.0f}});
+
+    math::Matrix m2 = math::submatrix(m1, 0, 0);
+
+    REQUIRE(m2  == m_res);
+}
