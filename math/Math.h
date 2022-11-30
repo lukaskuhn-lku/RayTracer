@@ -37,6 +37,10 @@ namespace math {
     float determinant(const Matrix &m);
 
     Matrix submatrix(const Matrix &m, int row, int column);
+
+    float minor(const Matrix &m, int row, int column);
+
+    float cofactor(const Matrix &m, int row, int column);
 }
 
 #endif //RAYTRACER_MATH_H

@@ -85,11 +85,17 @@ namespace math {
     }
 
     float determinant(const Matrix &m) {
+        float det = 0;
+
         if (m.shape.first == m.shape.second && m.shape.first == 2) {
-            return m.get(0, 0) * m.get(1, 1) - m.get(0, 1) * m.get(1, 0);
+            det =  m.get(0, 0) * m.get(1, 1) - m.get(0, 1) * m.get(1, 0);
+        }else{
+            for(int column = 0; column < m.shape.second; column++){
+                det = det + m.get(0, column) * cofactor(m, 0, column);
+            }
         }
 
-        return 0.0f;
+        return det;
     }
 
     Matrix submatrix(const Matrix &m, int row, int column) {
@@ -109,5 +115,18 @@ namespace math {
         }
 
         return {mat};
+    }
+
+    float minor(const Matrix &m, int row, int column) {
+        Matrix B = submatrix(m, row, column);
+        return(determinant(B));
+    }
+
+    float cofactor(const Matrix &m, int row, int column) {
+        if((row + column) % 2 != 0){
+            return minor(m, row, column) * -1;
+        }
+
+        return minor(m, row, column);
     }
 }

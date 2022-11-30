@@ -138,3 +138,46 @@ TEST_CASE("Submatrix 4x4 Matrix", "[math]") {
 
     REQUIRE(m2 == m_res);
 }
+
+TEST_CASE("Minor 3x3 Matrix", "[math]") {
+    math::Matrix m = math::Matrix({{3.0f, 5.0f, 0.0f},
+                                       {2.0f, -1.0f, -7.0f},
+                                       {6.0f, -1.0f, 5.0f}});
+
+    REQUIRE(math::minor(m, 1, 0) == 25.0f);
+}
+
+TEST_CASE("Cofactor 3x3 Matrix", "[math]") {
+    math::Matrix m = math::Matrix({{3.0f, 5.0f, 0.0f},
+                                   {2.0f, -1.0f, -7.0f},
+                                   {6.0f, -1.0f, 5.0f}});
+
+    REQUIRE(math::minor(m, 0, 0) == -12.0f);
+    REQUIRE(math::minor(m, 1, 0) == 25.0f);
+    REQUIRE(math::cofactor(m, 0, 0) == -12.0f);
+    REQUIRE(math::cofactor(m, 1, 0) == -25.0f);
+}
+
+TEST_CASE("Determinant 3x3 Matrix", "[math]") {
+    math::Matrix m = math::Matrix({{1.0f, 2.0f, 6.0f},
+                                   {-5.0f, 8.0f, -4.0f},
+                                   {2.0f, 6.0f, 4.0f}});
+
+    REQUIRE(math::cofactor(m, 0, 0) == 56.0f);
+    REQUIRE(math::cofactor(m, 0, 1) == 12.0f);
+    REQUIRE(math::cofactor(m, 0, 2) == -46.0f);
+    REQUIRE(math::determinant(m) == -196.0f);
+}
+
+TEST_CASE("Determinant 4x4 Matrix", "[math]") {
+    math::Matrix m = math::Matrix({{-2.0f, -8.0f, 3.0f, 5.0f},
+                                   {-3.0f, 1.0f, 7.0f, 3.0f},
+                                   {1.0f, 2.0f, -9.0f, 6.0f},
+                                   {-6.0f, 7.0f, 7.0f, -9.0f}});
+
+    REQUIRE(math::cofactor(m, 0, 0) == 690.0f);
+    REQUIRE(math::cofactor(m, 0, 1) == 447.0f);
+    REQUIRE(math::cofactor(m, 0, 2) == 210.0f);
+    REQUIRE(math::cofactor(m, 0, 3) == 51.0f);
+    REQUIRE(math::determinant(m) == -4071.0f);
+}
