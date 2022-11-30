@@ -181,3 +181,38 @@ TEST_CASE("Determinant 4x4 Matrix", "[math]") {
     REQUIRE(math::cofactor(m, 0, 3) == 51.0f);
     REQUIRE(math::determinant(m) == -4071.0f);
 }
+
+
+TEST_CASE("Inverse 4x4 Matrix", "[math]") {
+    math::Matrix m = math::Matrix({{-5.0f, 2.0f, 6.0f, -8.0f},
+                                   {1.0f, -5.0f, 1.0f, 8.0f},
+                                   {7.0f, 7.0f, -6.0f, -7.0f},
+                                   {1.0f, -3.0f, 7.0f, 4.0f}});
+
+    REQUIRE(math::determinant(m) == 532.0f);
+    REQUIRE(math::cofactor(m, 2,3) == -160.0f);
+    REQUIRE(math::cofactor(m, 3,2) == 105.0f);
+
+    REQUIRE(math::inverse(m).get(3,2) == -160.0f/532.0f);
+    REQUIRE(math::inverse(m).get(2,3) == 105.0f/532.0f);
+}
+
+TEST_CASE("Inverse 4x4 Matrix and Multiply", "[math]") {
+    math::Matrix m1 = math::Matrix({{-5.0f, 2.0f, 6.0f, -8.0f},
+                                   {1.0f, -5.0f, 1.0f, 8.0f},
+                                   {7.0f, 7.0f, -6.0f, -7.0f},
+                                   {1.0f, -3.0f, 7.0f, 4.0f}});
+
+
+    math::Matrix m2 = math::Matrix({{-2.0f, -8.0f, 3.0f, 5.0f},
+                                   {-3.0f, 1.0f, 7.0f, 3.0f},
+                                   {1.0f, 2.0f, -9.0f, 6.0f},
+                                   {-6.0f, 7.0f, 7.0f, -9.0f}});
+
+    math::Matrix m3 = m1*m2;
+
+    math::Matrix res = m3 * math::inverse(m2);
+    REQUIRE(res == m1);
+}
+
+

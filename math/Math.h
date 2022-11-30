@@ -41,6 +41,8 @@ namespace math {
     float minor(const Matrix &m, int row, int column);
 
     float cofactor(const Matrix &m, int row, int column);
+
+    Matrix inverse(const Matrix &m);
 }
 
 #endif //RAYTRACER_MATH_H

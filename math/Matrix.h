@@ -28,6 +28,8 @@ namespace math {
 
         float get(int row, int column) const;
 
+        bool isInvertible() const;
+
         std::string str() const;
 
     private:

@@ -80,3 +80,19 @@ TEST_CASE("Create Matrix from Array", "[matrix]") {
     REQUIRE(mat1.shape.first == 2);
     REQUIRE(mat1.shape.second == 3);
 }
+
+TEST_CASE("Is Matrix Invertible", "[matrix]") {
+    math::Matrix m1 = math::Matrix({{6.0f, 4.0f, 4.0f, 4.0f},
+                                   {5.0f, 5.0f, 7.0f, 6.0f},
+                                   {4.0f, -9.0f, 3.0f, -7.0f},
+                                   {9.0f, 1.0f, 7.0f, -6.0f}});
+
+    REQUIRE(m1.isInvertible());
+
+    math::Matrix m2 = math::Matrix({{-4.0f, 2.0f, -2.0f, -3.0f},
+                                   {9.0f, 6.0f, 2.0f, 6.0f},
+                                   {0.0f, -5.0f, 1.0f, -5.0f},
+                                   {0.0f, 0.0f, 0.0f, 0.0f}});
+
+    REQUIRE(!m2.isInvertible());
+}

@@ -4,6 +4,7 @@
 
 #include <stdexcept>
 #include "Matrix.h"
+#include "Math.h"
 
 namespace math {
     Matrix::Matrix(int n, int m, float x) {
@@ -45,7 +46,23 @@ namespace math {
     }
 
     bool operator==(const Matrix &mat1, const Matrix &mat2) {
-        return mat1.mat == mat2.mat;
+        const float epsilon = 0.0001f;
+
+        if(mat1.shape.first == mat2.shape.first && mat1.shape.second == mat2.shape.second){
+            for(int row = 0; row<mat1.shape.first; row++){
+                for(int col = 0; col<mat1.shape.second; col++){
+                    float comp = std::abs(mat1.get(row, col) - mat2.get(row, col));
+
+                    if(comp > epsilon){
+                        return false;
+                    }
+                }
+            }
+        }else{
+            return false;
+        }
+
+        return true;
     }
 
     bool operator!=(const Matrix &mat1, const Matrix &mat2) {
@@ -79,6 +96,10 @@ namespace math {
         }
 
         return trans;
+    }
+
+    bool Matrix::isInvertible() const{
+        return math::determinant(*this) != 0;
     }
 
 

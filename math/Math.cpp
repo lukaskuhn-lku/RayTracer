@@ -129,4 +129,20 @@ namespace math {
 
         return minor(m, row, column);
     }
+
+    Matrix inverse(const Matrix &m) {
+        if(!m.isInvertible()) throw std::invalid_argument("Matrix is not invertible");
+
+        Matrix inv = Matrix(m.shape.first, m.shape.second, 0.0f);
+        float deter = determinant(m);
+
+        for(int row = 0; row<m.shape.first; row++){
+            for(int col = 0; col<m.shape.second; col++){
+                float c = cofactor(m, row, col);
+                inv(col, row) = c / deter;
+            }
+        }
+
+        return inv;
+    }
 }
