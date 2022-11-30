@@ -215,4 +215,16 @@ TEST_CASE("Inverse 4x4 Matrix and Multiply", "[math]") {
     REQUIRE(res == m1);
 }
 
+TEST_CASE("Translate Point", "[math]"){
+    math::Matrix trans = math::translation(5, -3, 2);
+
+    math::Point p = math::Point(-3, 4, 5);
+
+    math::Point p_res = p * trans;
+
+    REQUIRE(p_res.x == 2.0f);
+    REQUIRE(p_res.y == 1.0f);
+    REQUIRE(p_res.z == 7.0f);
+}
+
 

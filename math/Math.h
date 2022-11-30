@@ -43,6 +43,9 @@ namespace math {
     float cofactor(const Matrix &m, int row, int column);
 
     Matrix inverse(const Matrix &m);
+
+    Point operator*(const Point &p, const Matrix &m1);
+    Point operator*(const Matrix &m1, const Point &p);
 }
 
 #endif //RAYTRACER_MATH_H

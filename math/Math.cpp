@@ -145,4 +145,19 @@ namespace math {
 
         return inv;
     }
+
+
+    Point operator*(const Point &p, const Matrix &m1) {
+
+        Matrix mp = Matrix({{p.x}, {p.y}, {p.z}, {p.w}});
+        Matrix resMat = m1*mp;
+
+        Point res = Point(resMat.get(0,0),resMat.get(1,0),resMat.get(2,0),resMat.get(3,0));
+
+        return res;
+    }
+
+    Point operator*(const Matrix &m1, const Point &p) {
+        return p*m1;
+    }
 }

@@ -11,6 +11,7 @@ namespace math {
     class Point : public Tuple {
     public:
         Point(float x, float y, float z);
+        Point(float x, float y, float z, float w);
     };
 }
 

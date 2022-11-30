@@ -12,4 +12,11 @@ namespace math {
         this->z = z;
         this->w = 1.0f;
     }
+
+    Point::Point(float x, float y, float z, float w) {
+        this->x = x;
+        this->y = y;
+        this->z = z;
+        this->w = w;
+    }
 }

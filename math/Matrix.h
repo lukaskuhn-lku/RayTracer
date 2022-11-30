@@ -17,7 +17,6 @@ namespace math {
 
         Matrix(std::vector<std::vector<float>> input);
 
-
         float &operator()(int row, int column);
 
         friend bool operator==(const Matrix &mat1, const Matrix &mat2);
@@ -35,6 +34,8 @@ namespace math {
     private:
         std::vector<std::vector<float>> mat;
     };
+
+    Matrix translation(float x, float y, float z);
 
 }
 

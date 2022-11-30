@@ -7,7 +7,7 @@
 #include "Math.h"
 
 namespace math {
-    Matrix::Matrix(int n, int m, float x) {
+    Matrix::Matrix(int m, int n, float x) {
         for (int i = 0; i < m; i++) {
             this->mat.emplace_back(std::vector<float>{});
 
@@ -17,7 +17,7 @@ namespace math {
             }
         }
 
-        this->shape = std::make_pair(n, m);
+        this->shape = std::make_pair(m, n);
     }
 
     //Create matrix from array
@@ -67,6 +67,15 @@ namespace math {
 
     bool operator!=(const Matrix &mat1, const Matrix &mat2) {
         return !(mat1 == mat2);
+    }
+
+    Matrix translation(float x, float y, float z) {
+        math::Matrix math = math::Matrix(4,4,1.0f);
+        math(0,3) = x;
+        math(1,3) = y;
+        math(2,3) = z;
+
+        return math;
     }
 
     float Matrix::get(int row, int column) const {
